@@ -2,6 +2,8 @@ package de.ing.slimeventcommandside.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,7 +45,7 @@ public class PersonController {
 	}
 	
 	@PutMapping(path = "/insert",consumes  = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> insert(@RequestBody Person person) {
+	public ResponseEntity<Void> insert(@Valid @RequestBody Person person) {
 		handler.handleInsert(person);
 		return ResponseEntity.ok().build();
 	}
